@@ -1,1 +1,1 @@
-#mth505: Number Theory
+#mth505: number theory
