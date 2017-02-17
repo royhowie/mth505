@@ -6,8 +6,9 @@
 \usepackage{parskip}
 \usepackage{enumitem}
 
-%\setlength{\parskip}{\baselineskip}
-%\setlength{\parindent}{0pt}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
 
 \newtheorem*{lemma}{Lemma}
 
@@ -18,423 +19,343 @@
 \date{February 1, 2017}
 \maketitle
 
-\section{Developing $\mathbb{N}$}
-Completed in the following order: a, b, c, d, e, h, f, g.
-\begin{enumerate}[label=\textbf{(\alph*)}]
-\item{
-	Let
-	$S=\{ n \in \mathbb{N} \mid n = 0 \ \vee \
-		\exists m \in \mathbb{N} \text{ such that } \sigma(m)=n
-	\}$.
-	Note $0 \in S$.
-	Next, suppose $x \in S$, then $\sigma(x) \in S$, as
-	there exists $m \in \mathbb{N}$ such that
-	$\sigma(m) = \sigma(x)$: namely, $x$ itself.
-	Hence, $\bf{P4}$
-	$\Rightarrow S = \mathbb{N}$.
+\section{Developing $\N$}
+  Completed in the following order: a, b, c, d, e, h, f, g.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item{
+      Let $S=\{n\in\N\mid n=0 \ \vee \ \exists m\in\N\text{ such that }\sigma(m)
+      =n\}$. Note $0\in S$. Next, suppose $x\in S$, then $\sigma(x)\in S$, as
+      there exists $m \in \N$ such that $\sigma(m)=\sigma(x)$: namely, $x$
+      itself. Hence, $\bf{P4}\Rightarrow S=\N$.
 
-	Next, fix $n \in \mathbb{N}$ and suppose
-	$\exists m_1,m_2 \in \mathbb{N}$ such that
-	$\sigma(m_1) = n = \sigma(m_2)$ and $m \ne n$.
-	This is a contradiction.
-	By $\bf{P3}$, $\sigma(m_1)=\sigma(m_2)$ implies $m_1=m_2$.
-	Hence, predecessors are unique.
-	\hfill $\square$
-}
+      Next, fix $n\in\N$ and suppose $\exists m_1,m_2\in\N$ such that
+      $\sigma(m_1)=n=\sigma(m_2)$ and $m\ne n$. This is a contradiction. By
+      $\bf{P3}$, $\sigma(m_1)=\sigma(m_2)$ implies $m_1=m_2$. Hence,
+      predecessors are unique.
+      \hfill $\square$
+    }
+    \item{
+      Fix $a,b\in\N$ and let $S=\{c\in\N\mid a+(b+c)=(a+b)+c\}$. By $\bf{(1)}$,
+      $0\in S$ as $a+(b+0)=a+(b)=(a+b)+0$. Next, suppose $n \in S$, then
+      \begin{align*}
+        a+(b+\sigma(n)) &= a+\sigma(b+n)    \tag{2} \\
+                        &= \sigma(a+(b+n))  \tag{2} \\
+                        &= \sigma((a+b)+n)  \tag{IH}\\
+                        &= (a+b)+\sigma(n)  \tag{2}
+      \end{align*}
+      Hence, $\sigma(n) \in S$, so $\bf{P4}\Rightarrow S = \N$.
+      \hfill $\square$
+    }
+    \item{
+      Let $S=\{n\in\N\mid0+n=n\}$. By $\bf{(1)}$, $0\in S$ as $0+0=0$. Next,
+      suppose $x\in S$, then
+      \begin{align*}
+        0 + \sigma(x) &= \sigma(0+x)  \tag{2} \\
+                      &= \sigma(x)    \tag{IH}
+      \end{align*}
+      Hence, $\sigma(x) \in S$, so $\bf{P4}\Rightarrow S=\N$. In addition, via
+      $\bf{(1)}$, one has $0+n=n+0$ for all $n\in\N$.
 
-\item{
-	Fix $a,b \in \mathbb{N}$ and let
-	$S=\{ c \in \mathbb{N} \mid a+(b+c)=(a+b)+c \}$.
-	By $\bf{(1)}$, $0 \in S$ as
-	$a+(b+0) = a+(b) = (a+b) + 0$.
-	Next, suppose $n \in S$, then
-	\begin{align*}
-		a+(b+\sigma(n))&= a+\sigma(b+n)		\tag{2} \\
-                       &= \sigma(a+(b+n))	\tag{2} \\
-                       &= \sigma((a+b)+n)	\tag{IH}\\
-                       &= (a+b) + \sigma(n) \tag{2}
-	\end{align*}
-	Hence, $\sigma(n) \in S$, so $\bf{P4}$
-	$\Rightarrow S = \mathbb{N}$.
-	\hfill $\square$
-}
-\item{
-	Let $S = \{ n \in \mathbb{N} \mid 0 + n = n \}$.
-	By $\bf{(1)}$, $0 \in S$ as $0+0=0$.
-	Next, suppose $x \in S$, then
-	\begin{align*}
-		0 + \sigma(x) &= \sigma(0 + x)	\tag{2} \\
-					  &= \sigma(x)		\tag{IH}
-	\end{align*}
-	Hence, $\sigma(x) \in S$, so $\bf{P4}$
-	$\Rightarrow S = \mathbb{N}$. In addition,
-	via $\bf{(1)}$, one has
-	$ 0 + n = n + 0$ for all $n \in \mathbb{N}$.
-	
-	Let
-	$ R = \{ n \in \mathbb{N} \mid
-		n+\sigma(0) = \sigma(0) + n \}
-	$. By above, $0 \in R$, as
-	$ 0 + \sigma(0) = \sigma(0) + 0$.
-	Suppose $x \in R$, then
-	\begin{align*}
-		\sigma(x)+\sigma(0) &= \sigma(\sigma(x) + 0)	\tag{2} \\
-		  &= \sigma(\sigma(x))			\tag{1} \\
-		  &= \sigma(\sigma(x+0))		\tag{1} \\
-		  &= \sigma(x+\sigma(0))		\tag{2} \\
-		  &= \sigma(\sigma(0)+x)		\tag{IH} \\
-		  &= \sigma(0) + \sigma(x)		\tag{2}
-	\end{align*}
-	Hence, $\sigma(x) \in R$, so $\bf{P4}$
-	$\Rightarrow R = \mathbb{N}$.
-	\hfill $\square$
-}
-\item{
-	Fix $a \in \mathbb{N}$ and let
-	$S=\{b \in \mathbb{N} \mid a+b=b+a \}$.
-	By $\bf{(c)}$, $0 \in S$.
-	Suppose $x \in S$, then
-	\begin{align*}
-		a+\sigma(x) &= \sigma(a+x)		\tag{2} \\
-					&= \sigma(x+a)		\tag{IH}\\
-					&= \sigma((x+a)+0)	\tag{1} \\
-					&= (x+a)+\sigma(0)	\tag{2} \\
-					&= x+(a+\sigma(0))	\tag{b} \\
-					&= x+(\sigma(0)+a)	\tag{c} \\
-					&= (x+\sigma(0))+a	\tag{b} \\
-					&= \sigma(x+0)+a	\tag{2} \\
-					&= \sigma(x)+a		\tag{1}
-	\end{align*}
-	Hence, $\sigma(x) \in S$, so $\bf{P4}$
-	$\Rightarrow S = \mathbb{N}$.
-	\hfill $\square$
-}
-\item{
-	Fix $b,c \in \mathbb{N}$ and let
-	$S=\{ a \in \mathbb{N} \mid (b+c)a = ba + ca \}$.
-	By $\bf{(1)}$ and $\bf{(3)}$, $0 \in S$, as
-	$(b+c)*0 = 0 + 0$.
-	Suppose $x \in S$, then
-	\begin{align*}
-		(b+c)\sigma(x) &= (b+c)x+(b+c)	\tag{4} \\
-			&= (bx+cx)+(b+c)			\tag{IH}\\
-			&= (bx+b)+(cx+c)			\tag{b,d}\\
-			&= b\sigma(x)+c\sigma(x)	\tag{4}
-	\end{align*}
-	Hence, $\sigma(x) \in S$, so $\bf{P4}$
-	$\Rightarrow S = \mathbb{N}$.
-	\hfill $\square$
-}
-\item{
-	Fix $a,b \in \mathbb{N}$ and let
-	$S=\{c \in \mathbb{N} \mid (ab)c=a(bc) \}$.
-	By $\bf{(3)}$, $0 \in S$, as
-	$a(b*0)=0=(ab)*0$.
-	Suppose $x \in S$, then
-	\begin{align*}
-		a(b\sigma(x)) &= a(bx+b) 		\tag{4}\\
-			&= a(bx) + ab				\tag{h,e}\\
-			&= (ab)x + ab				\tag{IH}\\
-			&= (ab)x + ab\sigma(0)		\tag{h}\\
-			&= (ab)(x+\sigma(0))		\tag{e}\\
-			&= (ab)\sigma(x+0)			\tag{2}\\
-			&= (ab)\sigma(x)			\tag{1}
-	\end{align*}
-	Hence, $\sigma(x) \in S$, so $\bf{P4}$
-	$\Rightarrow S = \mathbb{N}$.
-	\hfill $\square$
-}
-\item{
-	By $\bf{(h)}$ and $\bf{(4)}$,
-	$\sigma(a)b=b\sigma(a)=ba+b=ab+b$.
-	\hfill $\square$
-}
-\item{
-	Let $S=\{n\in\mathbb{N}\mid0*a=0\}$.
-	By $\bf{(3)}$, $0 \in S$, as
-	$0*0=0$.
-	Suppose $x\in S$, then
-	\begin{align*}
-		0*\sigma(x) &= 0*x + 0	\tag{4} \\
-			&= 0 + 0			\tag{IH}\\
-			&= 0				\tag{1}
-	\end{align*}
-	Hence, $\sigma(x) \in S$, so $\bf{P4}$
-	$\Rightarrow S = \mathbb{N}$.
+      Let $R=\{n\in\N\mid n+\sigma(0)=\sigma(0)+n\}$. By above, $0\in R$, as
+      $0+\sigma(0)=\sigma(0)+0$. Suppose $x\in R$, then
+      \begin{align*}
+        \sigma(x)+\sigma(0) &= \sigma(\sigma(x)+0)    \tag{2} \\
+                            &= \sigma(\sigma(x))      \tag{1} \\
+                            &= \sigma(\sigma(x+0))    \tag{1} \\
+                            &= \sigma(x+\sigma(0))    \tag{2} \\
+                            &= \sigma(\sigma(0)+x)    \tag{IH} \\
+                            &= \sigma(0)+\sigma(x)    \tag{2}
+      \end{align*}
+      Hence, $\sigma(x) \in R$, so $\bf{P4}\Rightarrow R=\N$.
+      \hfill $\square$
+    }
+    \item{
+      Fix $a\in\N$ and let $S=\{b\in\N\mid a+b=b+a\}$. By $\bf{(c)}$, $0\in S$.
+      Suppose $x\in S$, then
+      \begin{align*}
+        a+\sigma(x) &= \sigma(a+x)      \tag{2} \\
+                    &= \sigma(x+a)      \tag{IH}\\
+                    &= \sigma((x+a)+0)  \tag{1} \\
+                    &= (x+a)+\sigma(0)  \tag{2} \\
+                    &= x+(a+\sigma(0))  \tag{b} \\
+                    &= x+(\sigma(0)+a)  \tag{c} \\
+                    &= (x+\sigma(0))+a  \tag{b} \\
+                    &= \sigma(x+0)+a    \tag{2} \\
+                    &= \sigma(x)+a      \tag{1}
+      \end{align*}
+      Hence, $\sigma(x) \in S$, so $\bf{P4}\Rightarrow S=\N$.
+      \hfill $\square$
+    }
+    \item{
+      Fix $b,c\in\N$ and let $S=\{a\in\N\mid(b+c)a=ba+ca\}$. By $\bf{(1)}$ and
+      $\bf{(3)}$, $0\in S$, as $(b+c)*0=0+0$. Suppose $x\in S$, then
+      \begin{align*}
+        (b+c)\sigma(x)  &= (b+c)x+(b+c)           \tag{4}  \\
+                        &= (bx+cx)+(b+c)          \tag{IH} \\
+                        &= (bx+b)+(cx+c)          \tag{b,d}\\
+                        &= b\sigma(x)+c\sigma(x)  \tag{4}
+      \end{align*}
+      Hence, $\sigma(x) \in S$, so $\bf{P4}\Rightarrow S=\N$.
+      \hfill $\square$
+    }
+    \item{
+      Fix $a,b\in\N$ and let $S=\{c\in\N\mid(ab)c=a(bc)\}$. By $\bf{(3)}$, $0\in
+      S$, as $a(b*0)=0=(ab)*0$. Suppose $x\in S$, then
+      \begin{align*}
+        a(b\sigma(x)) &= a(bx+b)            \tag{4}  \\
+                      &= a(bx)+ab           \tag{h,e}\\
+                      &= (ab)x+ab           \tag{IH} \\
+                      &= (ab)x+ab\sigma(0)  \tag{h}  \\
+                      &= (ab)(x+\sigma(0))  \tag{e}  \\
+                      &= (ab)\sigma(x+0)    \tag{2}  \\
+                      &= (ab)\sigma(x)      \tag{1}
+      \end{align*}
+      Hence, $\sigma(x)\in S$, so $\bf{P4}\Rightarrow S=\N$.
+      \hfill $\square$
+    }
+    \item{
+      By $\bf{(h)}$ and $\bf{(4)}$, $\sigma(a)b=b\sigma(a)=ba+b=ab+b$.
+      \hfill $\square$
+    }
+    \item{
+      Let $S=\{n\in\N\mid0*a=0\}$. By $\bf{(3)}$, $0\in S$, as $0*0=0$. Suppose
+      $x\in S$, then
+      \begin{align*}
+        0*\sigma(x) &= 0*x+0    \tag{4} \\
+                    &= 0+0      \tag{IH}\\
+                    &= 0        \tag{1}
+      \end{align*}
+      Hence, $\sigma(x)\in S$, so $\bf{P4}\Rightarrow S=\N$.
 
-	Let $R=\{a\in\mathbb{N}\mid \sigma(0)*a=a\}$.
-	By $\bf{(1)}$, $0 \in S$, as
-	$\sigma(0)*0=0$.
-	Suppose $x \in S$, then
-	\begin{align*}
-		\sigma(0)\sigma(x) &= \sigma(0)x+\sigma(0)	\tag{4}\\
-			&= x + \sigma(0)		\tag{IH}\\
-			&= \sigma(x+0)			\tag{2} \\
-			&= \sigma(x)			\tag{1}
-	\end{align*}
-	Hence, $\sigma(x) \in R$, so $\bf{P4}$
-	$\Rightarrow R = \mathbb{N}$.
-	
-	Fix $a\in\mathbb{N}$ and let
-	$Q=\{b\in\mathbb{N}\mid ab=ba\}$.
-	By above, $0 \in Q$ because $0*a=a*0$.
-	Suppose $x\in Q$, then
-	\begin{align*}
-		a\sigma(x) &= ax+a		\tag{4} \\
-			&= xa+a				\tag{IH}\\
-			&= xa+\sigma(0)a	\tag{above}\\
-			&= (x+\sigma(0))a	\tag{e}\\
-			&= \sigma(x+0)a		\tag{2}\\
-			&= \sigma(x)a		\tag{1}
-	\end{align*}
-	Hence, $\sigma(x) \in Q$, so $\bf{P4}$
-	$\Rightarrow Q = \mathbb{N}$.
-	\hfill $\square$
-}
-\end{enumerate} 
-  
+      Let $R=\{a\in\N\mid\sigma(0)*a=a\}$. By $\bf{(1)}$, $0\in S$, as
+      $\sigma(0)*0=0$. Suppose $x\in S$, then
+      \begin{align*}
+        \sigma(0)\sigma(x)  &= \sigma(0)x+\sigma(0) \tag{4}\\
+                            &= x+\sigma(0)          \tag{IH}\\
+                            &= \sigma(x+0)          \tag{2} \\
+                            &= \sigma(x)            \tag{1}
+      \end{align*}
+      Hence, $\sigma(x) \in R$, so $\bf{P4}\Rightarrow R=\N$.
+
+      Fix $a\in\N$ and let $Q=\{b\in\N\mid ab=ba\}$. By above, $0\in Q$ because
+      $0*a=a*0$. Suppose $x\in Q$, then
+      \begin{align*}
+        a\sigma(x)  &= ax+a           \tag{4}     \\
+                    &= xa+a           \tag{IH}    \\
+                    &= xa+\sigma(0)a  \tag{above} \\
+                    &= (x+\sigma(0))a \tag{e}     \\
+                    &= \sigma(x+0)a   \tag{2}     \\
+                    &= \sigma(x)a     \tag{1}
+      \end{align*}
+      Hence, $\sigma(x) \in Q$, so $\bf{P4}\Rightarrow Q=\N$.
+      \hfill $\square$
+    }
+  \end{enumerate}
+
 \hfill\break
 \begin{lemma}{(Additive Cancellation)}
-	For $a,b,c \in \mathbb{N}$, if $a+c=b+c$, then $a=b$.
+  For $a,b,c \in \N$, if $a+c=b+c$, then $a=b$.
 \end{lemma}
 \begin{proof}
-	Fix $a,b\in\mathbb{N}$ and let
-  	$S=\{c\in\mathbb{N}\mid a+c=b+c\Rightarrow a=b\}$.
-  	Note $0\in S$. Suppose $x\in S$, then
-  	\begin{align*}
-    	a+\sigma(x) &= b+\sigma(x)          \\
-    	\sigma(a+x) &= \sigma(b+x) \tag{2}  \\
-                a+x &= b+x         \tag{P3} \\
-                  a &= b           \tag{IH}
+  Fix $a,b\in\N$ and let $S=\{c\in\N\mid a+c=b+c\Rightarrow a=b\}$. Note $0\in
+  S$. Suppose $x\in S$, then
+  \begin{align*}
+    a+\sigma(x) &= b+\sigma(x)          \\
+    \sigma(a+x) &= \sigma(b+x) \tag{2}  \\
+            a+x &= b+x         \tag{P3} \\
+              a &= b           \tag{IH}
   \end{align*}
-  Hence $\sigma(x) \in S$, so $\bf{P4}$
-  $\Rightarrow S = \mathbb{N}$.
+  Hence $\sigma(x) \in S$, so $\bf{P4}\Rightarrow S=\N$.
 \end{proof}
 
+\section{From $\N$ to $\Z$}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item{
+      To show $[a,b] \sim [c,d] \iff a+d=c+b$ is an equivalence relation:
+      \begin{enumerate}[label=(\arabic*)]
+        \item{
+          $[a,b] \sim [a,b] \Rightarrow a+b=a+b$
+        }
+        \item{
+          $[a,b] \sim [c,d] \Leftrightarrow [c,d] \sim [a,b]$. Note that
+          $[a,b]\sim[c,d]
+            \Leftrightarrow a+d=c+b
+            \Leftrightarrow c+b=a+d
+            \Leftrightarrow [c,d]\sim[a,b]
+          $.
+        }
+        \item{
+          $[a,b]\sim[c,d]\wedge[c,d]\sim[e,f]\Rightarrow[a,b]\sim[e,f]$. By
+          assumption, $a+d=b+c$ and $c+f=e+d$.
+          \begin{align*}
+                a+d &= c+b      \\
+            (a+d)+f &=(c+b)+f   \\
+                    &= b+(c+f)  \\
+                    &= b+(e+d)  \\
+                    &= (e+b)+d  \\
+            (a+f)+d &=(e+b)+d
+          \end{align*}
+          Hence, by the Additive Cancellation Lemma, $a+f=e+b$, so
+          $[a,b]\sim[e,f]$.
+          \hfill $\square$
+        }
+      \end{enumerate}
+    }
+    \item{
+      \begin{enumerate}[label=(\arabic*)]
+        \item{
+          To show $[a,b]+[c,d]=[a+c,b+d]$ is well-defined, consider
+          $[a,b]\sim[a',b']$ and $[c,d]\sim[c',d']$. Note that $a+b'=a'+b$ and
+          $c+d'=c'+d$. Therefore, $(a+b')+(c+d')=(a'+b)+(c'+d)$. Some shuffling
+          of terms yields $(a+c)+(b'+d')=(a'+c')+(b+d)$, implying $[a+c,b+d]\sim
+          [a'+c',b'+d']$, so addition on equivalence classes is indeed
+          well-defined.
+        }
+        \item{
+          To show $[a,b]*[c,d]=[ac+bd,ad+bc]$ is well-defined, again consider
+          $[a,b]\sim[a',b']$ and $[c,d]\sim[c',d']$.
 
-\section{From $\mathbb{N}$ to $\mathbb{Z}$}
-\begin{enumerate}[label=\textbf{(\alph*)}]
-\item{
-	To show $[a,b] \sim [c,d] \iff a+d=c+b$
-	is an equivalence relation:
-	\begin{enumerate}[label=(\arabic*)]
-	\item{
-		$[a,b] \sim [a,b] \Rightarrow a+b=a+b$
-	}
-	\item{
-		$[a,b] \sim [c,d] \Leftrightarrow [c,d] \sim [a,b]$.
-		Note that
-		$[a,b]\sim[c,d]
-			\Leftrightarrow a+d=c+b
-			\Leftrightarrow c+b=a+d
-			\Leftrightarrow [c,d]\sim[a,b]
-		$.
-	}
-	\item{
-		$[a,b]\sim[c,d]\wedge[c,d]\sim[e,f]\Rightarrow[a,b]\sim[e,f]$.
-		By assumption, $a+d=b+c$ and $c+f=e+d$.
-		\begin{align*}
-			a+d &= c+b        \\
-			(a+d)+f&=(c+b)+f  \\
-			       &= b+(c+f)  \\
-			       &= b+(e+d)  \\
-			       &= (e+b)+d  \\
-		   (a+f)+d &=(e+b)+d
-		\end{align*}
-		Hence, by the Additive Cancellation Lemma, $a+f=e+b$, so
-		$[a,b]\sim[e,f]$.
-		\hfill $\square$
-	}
-	\end{enumerate}
-}
-\item{
-	\begin{enumerate}[label=(\arabic*)]
-	\item{
-		To show $[a,b]+[c,d]=[a+c,b+d]$ is well-defined,
-		consider $[a,b]\sim[a',b']$ and
-		$[c,d]\sim[c',d']$.
-		Note that $a+b'=a'+b$ and $c+d'=c'+d$.
-		Therefore,
-		$(a+b')+(c+d')=(a'+b)+(c'+d)$.
-		Some shuffling of terms yields
-		$(a+c)+(b'+d')=(a'+c')+(b+d)$,
-		implying
-		$[a+c,b+d]\sim[a'+c',b'+d']$,
-		so addition on equivalence classes is indeed
-		well-defined.
-	}
-	\item{
-		To show $[a,b]*[c,d]=[ac+bd,ad+bc]$ is well-defined,
-		again consider $[a,b]\sim[a',b']$ and
-		$[c,d]\sim[c',d']$.
-		
-		We want
-		$[ac+bd,ad+bc]\sim[a'c'+b'd',a'd'+b'c']$,
-		or $(ac+bd)+(a'd'+b'c')=(a'c'+b'd')+(ad+bc)$.
-		We have $a+b'=a'+b$ and $c+d'=c'+d$.
-		We only need imagination:
-		\begin{align*}
-			(a+b')+(a'+b)+(c+d')+(c'+d) &= (a'+b)+(a+b')+(c'+d)+(c+d') \\
+          We want $[ac+bd,ad+bc]\sim[a'c'+b'd',a'd'+b'c']$, or
+          $(ac+bd)+(a'd'+b'c')=(a'c'+b'd')+(ad+bc)$. We have $a+b'=a'+b$ and
+          $c+d'=c'+d$. We only need imagination:
+          \begin{align*}
+            (a+b')+(a'+b)+(c+d')+(c'+d)
+                              &= (a'+b)+(a+b')+(c'+d)+(c+d') \\
             (a+b')c+(a'+b)d+(c+d')a'+(c'+d)b'
-           	     &= (a'+b)c+(a+b')d+(c'+d)a'+(c+d')b' \\
-			(ac+b'c)+(a'd+bd)+(ca'+d'a')+(c'b'+db')
-			     &= (a'c+bc)+(ad+b'd)+(c'a'+da')+ (cb'+d'b') \\
-			(ac+bd)+(d'a'+c'b')+(b'c+a'd+ca'+db')
-			 	 &= (c'a'+d'b')+(ad+bc)+(a'c+b'd+da'+cb') \\
-		    (ac+bd)+(d'a'+c'b') &= (c'a'+d'b')+(ad+bc)
-		\end{align*}
-		The general rule is to keep numbers of the form
-		$ab$ or $a'b'$ but not $a'b$ or $ab'$.
-		Nevertheless, the last line implies the desired result,
-		so multiplication on equivalence classes is
-		well-defined.
-		\hfill $\square$
-	}
-	\end{enumerate}
-}
-\item{
-	\begin{enumerate}[label=(\arabic*)]
-	\item{
-		Associativity of $+:\mathbb{Z}\to\mathbb{Z}$
-		\begin{align*}
-			([a,b]+[c,d])+[e,f] &= [a+c,b+d]+[e,f]\\
-				&= [(a+c)+e,(b+d)+f]\\
-				&= [a+(c+e),b+(d+f)]\\
-				&= [a,b]+[c+e,d+f]\\
-				&= [a,b]+([c,d]+[e,f])
-		\end{align*}
-	}
-	\item{
-		Commutativity of $+:\mathbb{Z}\to\mathbb{Z}$
-		\begin{align*}
-			[a,b]+[c,d] &= [a+c,b+d]\\
-				&=[c+a,d+b]\\
-				&=[c,d]+[a,b]
-		\end{align*}
-	}
-	\item{
-		Associativity of $*:\mathbb{Z}\to\mathbb{Z}$
-		\begin{align*}
-			([a,b]*[c,d])*[e,f] &= [ac+bd,ad+bc]*[e,f]\\
-				&= [(ac+bd)e+(ad+bc)f,(ac+bd)f+(ad+bc)e]\\
-				&= [ace+bde+adf+bcf,acf+bdf+ade+bce]\\
-				&= [a(ce+df)+b(cf+de),a(cf+de)+b(df+ce)]\\
-				&= [a,b]*[ce+df,cf+de]\\
-				&= [a,b]*([c,d]*[e,f])
-		\end{align*}
-	}
-	\item{
-		Commutativity of $*:\mathbb{Z}\to\mathbb{Z}$
-		\begin{align*}
-			[a,b]*[c,d] &= [ac+bd,ad+bc] \\
-				&= [ca+db,cb+da] \\
-				&= [c,d]*[a,b]
-		\end{align*}
-	}
-	\hfill $\square$
-	\end{enumerate}
-}
-\item{
-	First, additive inverses are added, which turns
-	$\mathbb{N}$ into an abelian group $\mathbb{Z}'$.
-	Next, a second binary operation, multiplication, is
-	added to transform the abelian group
-	$\mathbb{Z}'$ into the commutative ring $\mathbb{Z}$.
-	Every $n\in\mathbb{N}$ has an ``additive inverse''
-	in the form of the members of the equivalence class of $[0,n]$.
-}
-\end{enumerate}
+                              &= (a'+b)c+(a+b')d+(c'+d)a'+(c+d')b' \\
+            (ac+b'c)+(a'd+bd)+(ca'+d'a')+(c'b'+db')
+                              &= (a'c+bc)+(ad+b'd)+(c'a'+da')+ (cb'+d'b') \\
+            (ac+bd)+(d'a'+c'b')+(b'c+a'd+ca'+db')
+                              &= (c'a'+d'b')+(ad+bc)+(a'c+b'd+da'+cb') \\
+            (ac+bd)+(d'a'+c'b')
+                              &= (c'a'+d'b')+(ad+bc)
+          \end{align*}
+          The general rule is to keep numbers of the form $ab$ or $a'b'$ but not
+          $a'b$ or $ab'$. Nevertheless, the last line implies the desired
+          result, so multiplication on equivalence classes is well-defined.
+          \hfill $\square$
+        }
+      \end{enumerate}
+    }
+    \item{
+      \begin{enumerate}[label=(\arabic*)]
+        \item{
+          Associativity of $+:\Z\to\Z$
+          \begin{align*}
+            ([a,b]+[c,d])+[e,f] &= [a+c,b+d]+[e,f]  \\
+                                &= [(a+c)+e,(b+d)+f]\\
+                                &= [a+(c+e),b+(d+f)]\\
+                                &= [a,b]+[c+e,d+f]  \\
+                                &= [a,b]+([c,d]+[e,f])
+          \end{align*}
+        }
+        \item{
+          Commutativity of $+:\Z\to\Z$
+          \begin{align*}
+            [a,b]+[c,d] &= [a+c,b+d]\\
+                        &=[c+a,d+b] \\
+                        &=[c,d]+[a,b]
+          \end{align*}
+        }
+        \item{
+          Associativity of $*:\Z\to\Z$
+          \begin{align*}
+            ([a,b]*[c,d])*[e,f] &= [ac+bd,ad+bc]*[e,f]                  \\
+                                &= [(ac+bd)e+(ad+bc)f,(ac+bd)f+(ad+bc)e]\\
+                                &= [ace+bde+adf+bcf,acf+bdf+ade+bce]    \\
+                                &= [a(ce+df)+b(cf+de),a(cf+de)+b(df+ce)]\\
+                                &= [a,b]*[ce+df,cf+de]                  \\
+                                &= [a,b]*([c,d]*[e,f])
+          \end{align*}
+        }
+        \item{
+          Commutativity of $*:\Z\to\Z$
+          \begin{align*}
+            [a,b]*[c,d] &= [ac+bd,ad+bc] \\
+                        &= [ca+db,cb+da] \\
+                        &= [c,d]*[a,b]
+          \end{align*}
+        }
+        \hfill $\square$
+      \end{enumerate}
+    }
+    \item{
+      First, additive inverses are added, which turns $\N$ into an abelian group
+      $\Z'$. Next, a second binary operation, multiplication, is added to
+      transform the abelian group $\Z'$ into the commutative ring $\Z$. Every
+      $n\in\N$ has an ``additive inverse'' in the form of the members of the
+      equivalence class of $[0,n]$.
+    }
+  \end{enumerate}
 
 \vfill
-\section{From $\mathbb{Z}$ to $\mathbb{Q}$}
-\begin{enumerate}[label=\textbf{(\alph*)}]
-\item{
-	To show $[a,b]\sim[c,d] \Leftrightarrow ad=bc$
-	is an equivalence relation:
-	\begin{enumerate}[label=(\arabic*)]
-	\item{
-		$[a,b]\sim[a,b] \Rightarrow ab=ba$
-	}
-	\item{
-		$[a,b]\sim[c,d]\Leftrightarrow[c,d]\sim[a,b]$
-		Note that
-		$[a,b]\sim[c,d]
-			\Rightarrow ad = bc
-			\Rightarrow cb = da
-			\Rightarrow [c,d]\sim[a,b]
-		$.
-	}
-	\item{
-		$[a,b]\sim[c,d]\wedge[c,d]\sim[e,f]\Rightarrow[a,b]\sim[e,f]$.
-		By assumption, $ad=bc$ and $cf=de$.
-		\begin{align*}
-			(ad)f &= (bc)f \\
-				  &= b(cf) \\
-			      &= b(de) \\
-			 (af)d&= (be)d
-		\end{align*}
-		Hence, by multiplicative cancellation,
-		$af=be$, so $[a,b]\sim[e,f]$.
-		\hfill $\square$
-	}
-	\end{enumerate}
-}
-\item{
-	\begin{enumerate}[label=(\arabic*)]
-	\item{
-		To show $[a,b]*[c,d]=[ac,bd]$ is well-defined, consider
-		$[a,b]\sim[a',b']$ and $[c,d]\sim[c',d']$.
-		Note that $ab'=ba'$ and $cd'=dc'$.
-		Therefore, $(ab')(cd')=(ba')(dc')$.
-		Shuffling terms gives $(ac)(b'd')=(bd)(a'c')$,
-		implying $[ac,bd]\sim[a'c',b'd']$.
-		Hence, multiplication is well-defined.
-	}
-	\item{
-		To show $[a,b]+[c,d]=[ad+bc,bd]$ is well-defined, again consider
-		$[a,b]\sim[a',b']$ and $[c,d]\sim[c',d']$.
-		\begin{align*}
-			(ab')+(cd') &= (ba')+(dc')\\
-			(bb'+dd')(ab'+cd') &= (ba'+dc')(dd'+bb')\\
-			(ab'dd'+cd'bb')+(ab'bb'+cd'dd')
-				&= (a'bdd'+c'dbb')+(ba'bb'+dc'dd')\\
-			ab'dd'+cd'bb' &= a'bdd'+c'dbb'\\
-			(ad)(b'd')+(bc)(b'd')
-				&= (a'd')(bd)+(b'c')(bd)\\
-			(ad+bc)(b'd')&=(bd)(a'd'+b'c')
-		\end{align*}
-		Hence, $[ad+bc,bd]\sim[a'd'+b'c',b'd']$ and
-		addition is well-defined.
-	}
-	\hfill $\square$
-	\end{enumerate}
-}
-\item{
-	Too tedious.
-}
-\item{
-	$\mathbb{Z}$ is a commutative ring, whereas
-	$\mathbb{Q}$ is a field. Thus, to transition from
-	$\mathbb{Z}$ to $\mathbb{Q}$, one needs
-	multiplicative inverses for all nonzero integers.
-	Thus, every $q\in\mathbb{Q}$ is represented by an
-	equivalence class $[a,b]$ and has a corresponding
-	``multiplicative inverse'' represented by the
-	equivalence class $[b,a]$.
-}
-\end{enumerate}
+\section{From $\Z$ to $\Q$}
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item{
+      To show $[a,b]\sim[c,d] \Leftrightarrow ad=bc$ is an equivalence relation:
+      \begin{enumerate}[label=(\arabic*)]
+        \item{
+          $[a,b]\sim[a,b] \Rightarrow ab=ba$
+        }
+        \item{
+          $[a,b]\sim[c,d]\Leftrightarrow[c,d]\sim[a,b]$ Note that
+          $[a,b]\sim[c,d]
+            \Rightarrow ad = bc
+            \Rightarrow cb = da
+            \Rightarrow [c,d]\sim[a,b]
+          $.
+        }
+        \item{
+          $[a,b]\sim[c,d]\wedge[c,d]\sim[e,f]\Rightarrow[a,b]\sim[e,f]$. By
+          assumption, $ad=bc$ and $cf=de$.
+          \begin{align*}
+            (ad)f &= (bc)f \\
+                  &= b(cf) \\
+                  &= b(de) \\
+            (af)d &= (be)d
+          \end{align*}
+          Hence, by multiplicative cancellation, $af=be$, so $[a,b]\sim[e,f]$.
+          \hfill $\square$
+        }
+      \end{enumerate}
+    }
+    \item{
+      \begin{enumerate}[label=(\arabic*)]
+        \item{
+          To show $[a,b]*[c,d]=[ac,bd]$ is well-defined, consider $[a,b]\sim
+          [a',b']$ and $[c,d]\sim[c',d']$. Note that $ab'=ba'$ and $cd'=dc'$.
+          Therefore, $(ab')(cd')=(ba')(dc')$. Shuffling terms gives $(ac)(b'd')=
+          (bd)(a'c')$, implying $[ac,bd]\sim[a'c',b'd']$. Hence, multiplication
+          is well-defined.
+        }
+        \item{
+          To show $[a,b]+[c,d]=[ad+bc,bd]$ is well-defined, again consider
+          $[a,b]\sim[a',b']$ and $[c,d]\sim[c',d']$.
+          \begin{align*}
+            (ab')+(cd')         &= (ba')+(dc')\\
+            (bb'+dd')(ab'+cd')  &= (ba'+dc')(dd'+bb')\\
+            (ab'dd'+cd'bb')+(ab'bb'+cd'dd')
+                                &= (a'bdd'+c'dbb')+(ba'bb'+dc'dd')\\
+            ab'dd'+cd'bb'       &= a'bdd'+c'dbb'\\
+            (ad)(b'd')+(bc)(b'd')
+                                &= (a'd')(bd)+(b'c')(bd)\\
+            (ad+bc)(b'd')       &= (bd)(a'd'+b'c')
+          \end{align*}
+          Hence, $[ad+bc,bd]\sim[a'd'+b'c',b'd']$ and addition is well-defined.
+        }
+        \hfill $\square$
+      \end{enumerate}
+    }
+    \item{
+      Too tedious.
+    }
+    \item{
+      $\Z$ is a commutative ring, whereas $\Q$ is a field. Thus, to transition
+      from $\Z$ to $\Q$, one needs multiplicative inverses for all nonzero
+      integers. Thus, every $q\in\Q$ is represented by an equivalence class
+      $[a,b]$ and has a corresponding ``multiplicative inverse'' represented by
+      the equivalence class $[b,a]$.
+    }
+  \end{enumerate}
+
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
