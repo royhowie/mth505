@@ -90,6 +90,60 @@ Refer to the aforementioned set for future references to $R_{a,b,c}$.
   \hfill $\square$
 
 \subsection{} % 2.4
+  Let $a,b\in\N$ be coprime with $ab\ne0$. Prove every number $c>ab-a-b$ is
+  $(a,b)$-representable.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item{
+      Suppose $a=1$ or $b=1$. Without loss of generality, let $a=1$. We wish to
+      show every number $c>1*b-1-b=-1$ is $(a,b)$-representable. This is clearly
+      the case, as, for all $n\in\N$, $n=a*n$.
+    }
+    \item{
+      Assume $a,b\geq2$.
+
+      As $\gcd(a,b)=1$, there exist $x',y'\in\Z$ such that
+      $ax'+by'=1$. Furthermore, as in \textbf{2.2}, we may further constrain
+      $x'$ to $0\leq x'<b$. Next, note that $x'>0$, as $x=0$ implies $b=1$, but
+      we assumed $b\geq2$. Hence, $(x'-1)\in\N$.
+
+      Likewise, assume $(y'+a-1)<0$. This implies $y'\leq -a$. But then $ax'+by'
+      =1\leq ax'+b(-a)=a(x'-b)$, meaning $x'>b$. This is a contradiction, so
+      $(y'+a-1)\in\N$.
+
+      Therefore, $(1-a-b+ab)$ is $(a,b)$-representable. Indeed, $a(x'-1)+b(y'+a-
+      1)=1-a-b+ab$.
+    }
+    \item{
+      Let $n\geq(a-1)(b-1)$ and assume $n$ is $(a,b)$-representable. Let $x'$
+      and $y'$ be as in \textbf{(b)}. Then there exist $x,y\in\N$ such that $ax+
+      by=n$ and $0\leq x,x' <b$.
+
+      Note that $a(x+x')+b(y+y')=n+1$. If $y+y'\geq0$, then we are done.
+
+      Otherwise, suppose $y+y'+a<0$ and recall that $y'+a-1\geq0$. We then have
+      that $y+y'<-a\leq y'-1$. This implies $y<-1$. However, then we have:
+      \begin{align*}
+          ab-a-b+1 &\leq n = ax+by < ax+b(-1)\\
+          ab-a-b+1 &< ax-b\\
+          ab-a+1   &< ax\\
+                  x&>b
+      \end{align*}
+      As we assumed $0\leq x<b$, this is a contradiction! Hence, $(y+y'+a)\in
+      \N$.
+
+      Then, since $y+y'<0$, we have $ab-a-b<n$ and $a(x+x')+b(y+y')=
+      n+1\leq a(x+x')-b$, so:
+      \begin{align*}
+        a(b-1)-b &< a(x+x')-b\\
+        a(b-1)   &< a(x+x')\\
+        b-1      &< x+x'\\
+        b        &\leq x+x'
+      \end{align*}
+      Hence, $(x+x'-b)\in\N$ and $(x+x'-b,y+y'-a)$ is a valid representation of
+      $n+1$.
+    }
+    \hfill $\square$
+  \end{enumerate}
 \subsection{} % 2.5
 \subsection{} % 2.6
 
