@@ -1,0 +1,125 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{braket}
+\usepackage{centernot}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{titlesec}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\setcounter{section}{2}
+
+\titleformat{\subsection}[runin]
+  {\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\begin{document}
+
+\title{MTH 505 Homework 2}
+\author{Roy Howie}
+\date{February 20, 2017}
+\maketitle
+
+Fix $a,b\in\N$ with $ab\ne0$. Let $R_{a,b,c}=\set{(x,y)\in\N^2\mid ax+by=c}$.
+Refer to the aforementioned set for future references to $R_{a,b,c}$.
+
+\subsection{} % 2.1
+  Consider $a,b,c\in\N$ with $d=\gcd(a,b)$, where $a=da'$ and $b=db'$.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item{
+      Let $d\centernot\mid c$, then there exists $q,r\in\Z$ such that $c=qd+r$
+      and $0<r<d$. Note that $ax+by=c=qd+r$, or that $d(a'x+b'y-q)=r$. This
+      implies $d\mid r$, a contradiction, as $0<r<d$. Hence, $R_{a,b,c}=
+      \varnothing$.
+    }
+    \item{
+      Let $d\mid c$ with $c=dc'$ and let $R_{a',b',c'}=\set{(x,y)\in\N^2\mid
+      a'x+b'y=c'}$.
+
+      Suppose $(x,y)\in R_{a,b,c}$, then $ax+by=c$. This implies
+      $d(a'x+b'y)=dc'$, or that $a'x+b'y=c'$, meaning $(x,y)\in R_{a',b',c'}$.
+      Hence, $R_{a,b,c}\subset R_{a',b',c'}$.
+
+      Conversely, suppose $(x',y')\in R_{a',b',c'}$, then $a'x'+b'y'=c'$,
+      implying $d(a'x'+b'y')=dc'$. Therefore, $ax'+by'=c$, so
+      $(x',y')\in R_{a,b,c}$. Hence, $R_{a',b',c'}\subset R_{a,b,c}$
+
+      Thus, $R_{a,b,c}=R_{a',b',c'}$.
+    }
+    \hfill $\square$
+  \end{enumerate}
+
+\subsection{} % 2.2
+  Let $a,b,c\in\N$ with $ab\ne0$ and $\gcd(a,b)=1$. If $R_{a,b,c}$ is nonempty,
+  prove there exists unique $(u,v)\in R_{a,b,c}$ such that $0\leq u<b$.
+
+  \textit{Existence.}
+  Let $(x,y)\in R_{a,b,c,}$, then there exists unique $q,r\in\N$ such that
+  $x=qb+r$ and $0\leq r<b$. If $q=0$, then $x<b$, so $(u,v)=(x,y)$. Otherwise,
+  $ax+by=c$ implies $a(qb+r)+by=c$, or that $ar+b(y+aq)=c$, meaning
+  $(u,v)=(r,y+aq)$.
+
+  \textit{Uniqueness.}
+  Suppose $(x,y)$ can be reduced to two pairs $(u,v)$ and $(\tilde{u},
+  \tilde{v})$ with $0\leq u,\tilde{u}<b$. Then $au+bv=c$ and $a\tilde{u}+b
+  \tilde{v}=c$, implying $au\equiv c\pmod{b}$ and $a\tilde{u}\equiv c\pmod{b}$.
+  But $a$ and $b$ are coprime, so $u\equiv c\equiv\tilde{u}\pmod{b}$.
+  Furthermore, $0\leq u,\tilde{u}<b$, so $u$ and $\tilde{u}$ inhabit the same
+  residue class and are therefore equal.
+  \hfill $\square$
+
+\subsection{} % 2.3
+  Let $a,b\in\N$ be coprime with $ab\ne0$. If $c=ab-a-b$, prove $R_{a,b,c}=
+  \varnothing$.
+  % Let $(\hat{x},\hat{y})$ be a solution to the equation $ax+by=c$. Then, by the
+  % Division Algorithm, there are unique $q,u$ such that $\hat{x}=qb+u$ and $0\leq
+  % u<b$. Set $v$ equal to $\hat{y}+aq$.
+  %
+  % Note that $(x,y)=(b-1,-1)$ is a solution to the equation $ax+by=ab-a-b$.
+  % Suppose $(x,y)\in R_{a,b,c}$, then, by the Division Algorithm, it can be
+  % reduced to the form $(u,v)$ with $0\leq u<b$.
+
+  % Let $S=\set{(x,y)\in\Z\times\Z\mid ax+by=ab-a-b}$. Note that $(b-1,-1)\in S$.
+  % Suppose $R_{a,b,c}$ is nonempty. However, then there is a pair $(x,y)$ without
+  % a corresponding $(u,v)$. Furthermore, per \textbf{2.2}, $(u,v)$ was unique,
+
+  % described in \textbf{2.2}. But $(u,v)$ was proven to
+  % uniquely exist in \textbf{2.2}!
+
+  Note that, in \textbf{2.2}, we have existence iff $R_{a,b,c}$ is nonempty;
+  uniqueness, however, is a result of the Division Algorithm. That is, there is
+  only one pair $(u,v)\in\Z^2$ satisfying $au+bv=ab-a-b$ with $0\leq u<b$.
+
+  Next, note that $(u,v)=(b-1,-1)$ is a solution to $au+bv=ab-a-b$. Thus, if
+  $R_{a,b,c}$ is nonempty, then it contains a pair $(x,y)$ without a
+  corresponding $(u,v)$ satisfying the conditions laid out in \textbf{2.2}. But
+  for all $(x,y)$ in $R_{a,b,c}$, $(u,v)$ existed and was unique! Hence,
+  $R_{a,b,c}$ is empty.
+  %must be empty and $c=ab-a-b$ is not $(a,b)\text{-representable}$.
+  \hfill $\square$
+
+  % By \textbf{2.2}, for all $(x,y)\in R_{a,b,c}$, there is a corresponding pair
+  % $(u,v)$ such that $au+bv=c$ and $0\leq u<b$. [Note this does not require
+  % $(u,v)\in R_{a,b,c}$, as we are ``picking'' $q,r$ from $\Z$ instead of $\N$.]
+  %
+  % Suppose there exists $(x,y)\in R_{a,b,c}$, then, by \textbf{2.2}, there is a
+  % solution $(u,v)\in R_{a,b,c}$ with $0\leq u<b$. Note that, by definition,
+  % $(u,v)$ is a solution iff $v\geq0$. Therefore, $(u,v)=(b-1,-1)\notin
+  % R_{a,b,c}$ because $v<0$.
+  %
+  % However, $a(b-1)+b(-1)=ab-a-b=c$, so $(u,v)$ should be in $R_{a,b,c}$. Indeed,
+  % the pair $(u,v)$ should uniquely satisfy $0\leq u<b$ and $au+bv=c$.
+  %
+  % A contradiction! Hence, $R_{a,b,c}$ is empty.
+
+\subsection{} % 2.4
+\subsection{} % 2.5
+\subsection{} % 2.6
+
+\end{document}
