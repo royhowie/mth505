@@ -77,23 +77,9 @@ Refer to the aforementioned set for future references to $R_{a,b,c}$.
 \subsection{} % 2.3
   Let $a,b\in\N$ be coprime with $ab\ne0$. If $c=ab-a-b$, prove $R_{a,b,c}=
   \varnothing$.
-  % Let $(\hat{x},\hat{y})$ be a solution to the equation $ax+by=c$. Then, by the
-  % Division Algorithm, there are unique $q,u$ such that $\hat{x}=qb+u$ and $0\leq
-  % u<b$. Set $v$ equal to $\hat{y}+aq$.
-  %
-  % Note that $(x,y)=(b-1,-1)$ is a solution to the equation $ax+by=ab-a-b$.
-  % Suppose $(x,y)\in R_{a,b,c}$, then, by the Division Algorithm, it can be
-  % reduced to the form $(u,v)$ with $0\leq u<b$.
 
-  % Let $S=\set{(x,y)\in\Z\times\Z\mid ax+by=ab-a-b}$. Note that $(b-1,-1)\in S$.
-  % Suppose $R_{a,b,c}$ is nonempty. However, then there is a pair $(x,y)$ without
-  % a corresponding $(u,v)$. Furthermore, per \textbf{2.2}, $(u,v)$ was unique,
-
-  % described in \textbf{2.2}. But $(u,v)$ was proven to
-  % uniquely exist in \textbf{2.2}!
-
-  Note that, in \textbf{2.2}, we have existence iff $R_{a,b,c}$ is nonempty;
-  uniqueness, however, is a result of the Division Algorithm. That is, there is
+  Note that, in \textbf{2.2}, we have existence iff $R_{a,b,c}$ is nonempty.
+  Uniqueness, however, is a result of the Division Algorithm. That is, there is
   only one pair $(u,v)\in\Z^2$ satisfying $au+bv=ab-a-b$ with $0\leq u<b$.
 
   Next, note that $(u,v)=(b-1,-1)$ is a solution to $au+bv=ab-a-b$. Thus, if
@@ -101,22 +87,7 @@ Refer to the aforementioned set for future references to $R_{a,b,c}$.
   corresponding $(u,v)$ satisfying the conditions laid out in \textbf{2.2}. But
   for all $(x,y)$ in $R_{a,b,c}$, $(u,v)$ existed and was unique! Hence,
   $R_{a,b,c}$ is empty.
-  %must be empty and $c=ab-a-b$ is not $(a,b)\text{-representable}$.
   \hfill $\square$
-
-  % By \textbf{2.2}, for all $(x,y)\in R_{a,b,c}$, there is a corresponding pair
-  % $(u,v)$ such that $au+bv=c$ and $0\leq u<b$. [Note this does not require
-  % $(u,v)\in R_{a,b,c}$, as we are ``picking'' $q,r$ from $\Z$ instead of $\N$.]
-  %
-  % Suppose there exists $(x,y)\in R_{a,b,c}$, then, by \textbf{2.2}, there is a
-  % solution $(u,v)\in R_{a,b,c}$ with $0\leq u<b$. Note that, by definition,
-  % $(u,v)$ is a solution iff $v\geq0$. Therefore, $(u,v)=(b-1,-1)\notin
-  % R_{a,b,c}$ because $v<0$.
-  %
-  % However, $a(b-1)+b(-1)=ab-a-b=c$, so $(u,v)$ should be in $R_{a,b,c}$. Indeed,
-  % the pair $(u,v)$ should uniquely satisfy $0\leq u<b$ and $au+bv=c$.
-  %
-  % A contradiction! Hence, $R_{a,b,c}$ is empty.
 
 \subsection{} % 2.4
 \subsection{} % 2.5
