@@ -23,13 +23,12 @@
 
 \begin{document}
 
-\title{MTH 505 Homework 2}
+\title{\vspace{-2.05cm}MTH 505 Homework 2}
 \author{Roy Howie}
 \date{February 20, 2017}
 \maketitle
 
-Fix $a,b\in\N$ with $ab\ne0$. Let $R_{a,b,c}=\set{(x,y)\in\N^2\mid ax+by=c}$.
-Refer to the aforementioned set for future references to $R_{a,b,c}$.
+Fix $a,b\in\N$ with $ab\ne0$ and let $R_{a,b,c}=\set{(x,y)\in\N^2\mid ax+by=c}$.
 
 \subsection{} % 2.1
   Consider $a,b,c\in\N$ with $d=\gcd(a,b)$, where $a=da'$ and $b=db'$.
@@ -158,13 +157,39 @@ Refer to the aforementioned set for future references to $R_{a,b,c}$.
 
   Thus, $cx'+kb\geq0$ implies $k\geq-\frac{cx}{b}$ and $cy'-ka\geq0$ implies $k
   \leq\frac{cy'}{a}$. Hence,
-  \begin{align*}
+  \begin{equation*}
     |R_{a,b,c}| = \floor*{\frac{cy'}{a}-\frac{-cx'}{b}}
                 = \floor*{\frac{c}{ab}(y'b+x'a)}
                 = \floor*{\frac{c}{ab}}
-  \end{align*}
-  \qed
+    \tag*{\qed}
+  \end{equation*}
 
 \subsection{} % 2.6
+  Let $a,b\in\N$ be coprime with $ab\ne0$. Given $c\in\N\cap(0,ab)$ such that
+  $a$ and $b$ do not divide c, prove $|R_{a,b,c}|+|R_{a,b,ab-c}|=1$.
+
+  Define $\set{x}$ as $x-\floor*{x}$ and note $|R_{a,b,c}|=\frac{c}{ab}
+  -\set{\frac{cy'}{a}}-\set{\frac{cx'}{b}}+1$ for $ax'+by'=1$. Then,
+  \begin{align*}
+    |R_{a,b,ab-c}|
+      &= \frac{ab-c}{ab} -\left\{ \frac{(ab-c)y'}{a} \right\}
+        -\left\{ \frac{(ab-c)x'}{b} \right\} +1\\
+      &= 2-\frac{c}{ab} - \left\{ by'-\frac{cy'}{a} \right\}
+        -\left\{ ax'-\frac{cx'}{b} \right\}\\
+      &= 2-\frac{c}{ab} - \left(1 - \left\{ \frac{cy'}{a} \right\} \right)
+        -\left(1-\left\{ \frac{cx'}{b} \right\}\right)\\
+      &= -\frac{c}{ab}+\left\{\frac{cy'}{a}\right\}+\left\{\frac{cx'}{b}\right\}
+  \end{align*}
+  Thus,
+  $
+    |R_{a,b,c}|+|R_{a,b,ab-c}|
+      = \left(
+          \frac{c}{ab}-\left\{\frac{cy'}{a}\right\}-\left\{\frac{cx'}{b}\right\}+1
+      \right) + \left(
+        -\frac{c}{ab}+\left\{\frac{cy'}{a}\right\}+\left\{\frac{cx'}{b}\right\}
+      \right)
+      = 1
+  $
+  \qed
 
 \end{document}
