@@ -7,12 +7,14 @@
 \usepackage{braket}
 \usepackage{centernot}
 \usepackage{enumitem}
+\usepackage{mathtools}
 \usepackage{parskip}
 \usepackage{titlesec}
 
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 \setcounter{section}{2}
 
@@ -147,6 +149,22 @@ Refer to the aforementioned set for future references to $R_{a,b,c}$.
   \end{enumerate}
 
 \subsection{} % 2.5
+  Let $a,b\in\N$ be coprime with $ab\ne0$. Prove $|R_{a,b,c}|=\floor*{
+  \frac{c}{ab}}$.
+
+  Note that all solutions $(x,y)$ to the equation $ax+by=c$ are of the form
+  $(cx'+kb,cy'-ka)$ for all $k\in\Z$ and for $(x',y')$ solving $ax'+by'=1$.
+  Furthermore, if a solution $(u,v)\in R_{a,b,c}$, then $u,v\geq0$.
+
+  Thus, $cx'+kb\geq0$ implies $k\geq-\frac{cx}{b}$ and $cy'-ka\geq0$ implies $k
+  \leq\frac{cy'}{a}$. Hence,
+  \begin{align*}
+    |R_{a,b,c}| = \floor*{\frac{cy'}{a}-\frac{-cx'}{b}}
+                = \floor*{\frac{c}{ab}(y'b+x'a)}
+                = \floor*{\frac{c}{ab}}
+  \end{align*}
+  \hfill $\square$
+
 \subsection{} % 2.6
 
 \end{document}
