@@ -114,36 +114,38 @@ Refer to the aforementioned set for future references to $R_{a,b,c}$.
       1)=1-a-b+ab$.
     }
     \item{
-      Let $n\geq(a-1)(b-1)$ and assume $n$ is $(a,b)$-representable. Let $x'$
+      Let $n\geq ab-a-b+1$ and assume $n$ is $(a,b)$-representable. Let $x'$
       and $y'$ be as in \textbf{(b)}. Then there exist $x,y\in\N$ such that $ax+
-      by=n$ and $0\leq x,x' <b$.
+      by=n$ and $0\leq x<b$.
 
       Note that $a(x+x')+b(y+y')=n+1$. If $y+y'\geq0$, then we are done.
+      Otherwise, we wish to show $(x+x'-b,y+y'+a)\in\N^2$.
 
-      Otherwise, suppose $y+y'+a<0$ and recall that $y'+a-1\geq0$. We then have
-      that $y+y'<-a\leq y'-1$. This implies $y<-1$. However, then we have:
+      Suppose $y+y'+a<0$ and recall from \textbf{(b)} that $y'+a\geq1$. We then
+      have $y+y'<-a\leq y'-1$, or that $y<-1$. However, this implies
       \begin{align*}
-          ab-a-b+1 &\leq n = ax+by < ax+b(-1)\\
-          ab-a-b+1 &< ax-b\\
-          ab-a+1   &< ax\\
-                  x&>b
+          ab-a-b+1   &\leq n = ax+by < ax+b(-1)\\
+          a(b-1)-b+1 &< ax-b\\
+          a(b-1)     &< ax\\
+          b          &\leq x
       \end{align*}
-      As we assumed $0\leq x<b$, this is a contradiction! Hence, $(y+y'+a)\in
-      \N$.
+      But we assumed $0\leq x<b$, so this is a contradiction! Hence, $(y+y'+a)
+      \in\N$.
 
-      Then, since $y+y'<0$, we have $ab-a-b<n$ and $a(x+x')+b(y+y')=
-      n+1\leq a(x+x')-b$, so:
+      Next, note that $ab-a-b<n$ by assumption. Furthermore, $n+1=a(x+x')+b(y+
+      y')\leq a(x+x')-b$, as $y+y'<0$. Since $n<n+1$, it follows that
       \begin{align*}
-        a(b-1)-b &< a(x+x')-b\\
+        ab-a-b   &< a(x+x')-b\\
         a(b-1)   &< a(x+x')\\
         b-1      &< x+x'\\
         b        &\leq x+x'
       \end{align*}
-      Hence, $(x+x'-b)\in\N$ and $(x+x'-b,y+y'-a)$ is a valid representation of
-      $n+1$.
+      Hence, $(x+x'-b)\in\N$ and $(x+x'-b,\,y+y'+a)$ is indeed a valid
+      representation of $n+1$.
     }
     \hfill $\square$
   \end{enumerate}
+
 \subsection{} % 2.5
 \subsection{} % 2.6
 
