@@ -1,0 +1,84 @@
+\documentclass{article}
+% \usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{titling}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\setcounter{section}{3}
+
+\begin{document}
+
+\title{\vspace{-3cm}MTH 505 Homework 3}
+\author{Roy Howie}
+% \date{March 10, 2017}
+\maketitle
+
+% problem 3.1
+\subsection{Infinitely Many Primes}
+  Suppose there is a finite number of positive primes $p_1,p_2,\cdots,p_k$ and
+  consider the number $N=1+\prod_{i=1}^k{p_i}$. Note that $N\ge2$, so it must
+  have a positive prime factor $q$. Furthermore, for all $i$, one has $N\equiv1
+  \pmod{p_i}$. But $q$ divides $N$, so there is no $p_i$ equal to $q$. This is a
+  contradiction, as we assumed our list contained all positive prime numbers.
+  Hence, no such finite list exists.
+  \qed
+
+% problem 3.2
+\subsection{Infinitely Many Primes $\equiv$ 3 Modulo 4}
+  Let $n\equiv3\pmod{4}$ be a positive integer, then it can be written as the
+  product of positive primes: $p_1p_2\cdots p_k$. Note that $p_i$ is either
+  equal to 1 or 3 modulo 4. Assume $p_i\equiv1\pmod{4}$ for all $i$. This is a
+  contradiction, as then $n\equiv p_1p_2\cdots p_k\equiv1*1*\cdots
+  *1\equiv1\pmod{4}$. But we assumed $n\equiv3\pmod{4}$. Hence, $n$ has at least
+  one prime factor which is 3 modulo 4.
+
+  Next, suppose there is a finite number of primes congruent to 3 modulo 4: $3<
+  p_1 <p_2<\cdots<p_k$. Consider $N=3+4\prod_{i=1}^k{p_i}$. Note that $N\equiv3
+  \pmod{4}$, so it has a prime factor $q\equiv3\pmod{4}$. Furthermore, note
+  that, for all $i$, one has $N\equiv3\pmod{p_i}$. But $q$ divides $N$, so there
+  is no $p_i$ equal to $q$. This is a contradiction, as our list purportedly
+  contained all primes congruent to 3 modulo 4. Therefore, no such finite list
+  exists.
+  \qed
+
+% problem 3.3
+\subsection{Infinitely Many Primes $\equiv$ 1 Modulo 4}
+  Suppose there is a finite number of primes congruent to 1 modulo 4: $p_1,p_2,
+  \cdots,p_k$. Let $x=2p_1p_2\cdots p_k$ and consider $N=1+x^2$. Note that $N
+  \equiv1\pmod{4}$, as $4\mid x^2$. Furthermore, for all $i$, one has $p_i\mid
+  x$, so $N\equiv1\pmod{p_i}$.
+
+  If $N$ is prime, this is a contradiction, for then there is a prime number
+  congruent to 1 modulo 4 not found in the above list.
+
+  Otherwise, $N$ has a prime divisor $q$. Let $\varphi$ be the totient function
+  and note that $\varphi(q)=q-1$. But then $x^2\equiv N-1\equiv-1\pmod{q}$, so
+  $x^4\equiv1\pmod{q}$. This implies $4\mid (q-1)$, or that $q\equiv1\pmod{4}$.
+  Recall that none of the primes in our list divided $N$. However, $q\mid N$, so
+  $q$ is a prime congruent to 1 modulo 4 not present in our list of primes. This
+  is a contradiction, as our list supposedly contained all primes congruent to 1
+  modulo 4.
+
+  Hence, no such list exists.
+  \qed
+
+% problem 3.4
+\subsection{A Useful Lemma}
+  Let $a,b,c\in\Z$ with $\gcd(a,b)=1$. We wish to show $a\mid c$ and $b\mid c$
+  implies $ab\mid c$.
+
+  Note that there exist $d,e,x,y\in\Z$ such that $ad=c=be$ and $ax+by=1$. Thus,
+  \begin{equation*}
+    c = cax+cby=(be)ax+(ad)by=ab(ex+dy)
+  \end{equation*}
+  So $ab$ divides $c$.
+  \qed
+
+\end{document}
