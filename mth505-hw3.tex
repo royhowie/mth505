@@ -1,5 +1,4 @@
 \documentclass{article}
-% \usepackage[margin=1in]{geometry}
 \usepackage{amsfonts}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -15,9 +14,9 @@
 
 \begin{document}
 
-\title{\vspace{-3cm}MTH 505 Homework 3}
+\title{\vspace{-2.5cm}MTH 505 Homework 3}
 \author{Roy Howie}
-% \date{March 10, 2017}
+\date{March 6, 2017}
 \maketitle
 
 % problem 3.1
@@ -79,6 +78,35 @@
     c = cax+cby=(be)ax+(ad)by=ab(ex+dy)
   \end{equation*}
   So $ab$ divides $c$.
+  \qed
+
+% problem 3.5
+\subsection{Generalization of Euler's Totient Theorem}
+  Let $n$ be a positive integer with prime factorization $p_1^{e_1}p_2^{e_2}
+  \cdots p_k^{e_k}$. Let $e,f\in\Z$ such that $e_i\leq e$ and $\varphi(p_i^{e_i}
+  )\mid f$ for all $i$. Fix $a\in\Z$.
+
+  For each $p_i$, either $p_i$ divides $a$ or $p_i$ does not divide $a$. If
+  $p_i$ divides $a$, note that $p_i^{e_i}$ divides $a^e$, as $e_i\leq e$.
+
+  Conversely, if $p_i$ does not divide $a$, then $a$ and $q=p_i^{e_i}$ are
+  coprime. Let $d=\varphi(q)$. Then, by Euler's Totient Theorem, one has $a^d
+  \equiv1\pmod{q}$. But $\varphi(q)$ divides $f$, so $a^f\equiv1\pmod{q}$.
+  Equivalently, $q=p_i^{e_i}$ divides $a^f-1$.
+
+  Therefore, $p_i^{e_i}$ divides $a^e(a^f-1)$ for every $p_i$. Hence, by
+  \textbf{(3.4)}, one must have that $p_1^{e_1}p_2^{e_2}\cdots p_k^{e_k}=n$
+  divides $a^e(a^f-1)$.
+
+  Thus, $a^{f+e}\equiv a^e\pmod{n}$.
+  \qed
+
+% problem 3.6
+\subsection{RSA Cryptosystem}
+  Let $p,q\in\Z$ be prime. Let $n=pq$, $e=1$, and $f=\varphi(pq)=(p-1)(q-1)$.
+
+  Then, for all $a\in\Z$, one has via \textbf{(3.5)} that $a^{f+e}\equiv a^e
+  \pmod{pq}$. This is equivalent to $a^{(p-1)(q-1)+1}\equiv a\pmod{pq}$.
   \qed
 
 \end{document}
