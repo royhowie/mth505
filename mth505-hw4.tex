@@ -5,12 +5,31 @@
 \usepackage{amsthm}
 \usepackage{centernot}
 \usepackage{enumitem}
+\usepackage{float}
+% \usepackage[margin=1in]{geometry}
 \usepackage{parskip}
+\usepackage{pgfplots}
+\usepackage{tikz}
 \usepackage{titling}
 
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
 
 \setcounter{section}{4}
+
+% axis style, ticks, etc
+\pgfplotsset{
+  every axis/.append style={
+    axis x line=middle,    % put the x axis in the middle
+    axis y line=middle,    % put the y axis in the middle
+    axis line style={<->}, % arrows on the axis
+    xlabel={$x$},          % default put x on x-axis
+    ylabel={$y$},          % default put y on y-axis
+  }
+}
+
+% arrows as stealth fighters
+\tikzset{>=stealth}
 
 \begin{document}
 
@@ -80,6 +99,85 @@
 
 % problem 4.3
 \subsection{Rational Points on a Hyperbola}
+  Consider (Hyp): $4\alpha^2-4\alpha\beta-7\beta^2-16\beta-12=0$.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item{
+      Let $P=\left(\begin{smallmatrix}1&0.5\\0&1\end{smallmatrix}\right)$ and
+      $u=(-0.5,-1)$. Apply the affine transformation $x=Px'+u$, where $x=(\alpha,
+      \beta)$ and $x'=(x,y)$. This yields $\alpha=x+0.5y-0.5$ and $\beta=y-1$.
+    }
+    \item{
+      \begin{figure}[H]
+        \hspace*{1cm}
+        \begin{tikzpicture}
+          \begin{axis}[
+              xmin=-5,xmax=5,
+              ymin=-5,ymax=5,
+              legend pos=north east,
+              width=\textwidth,
+            ]
+            \addplot [blue!40!black,very thick,domain=-2.29:2.29,<->]
+              ({cosh(x)}, {sinh(x)/sqrt(2)});
+            \addplot [blue!40!black,very thick,domain=-2.29:2.29,<->]
+              ({-cosh(x)}, {sinh(x)/sqrt(2)});
+            \addplot[black,dashed] expression {+x/sqrt(2)};
+            \addplot[black,dashed] expression {-x/sqrt(2)};
+            \addplot[red,<->,domain=-5:5] expression {0.33*(x+1)};
+            \legend{$x^2-2y^2=1$,,,,$y=t(x-1)$}
+          \end{axis}
+        \end{tikzpicture}
+      \end{figure}
+    }
+    \item{
+      Consider the equations $x^2-2y^2=1$ and $y=t(x+1)$, then
+      \begin{align*}
+        0 &= x^2-2y^2-1\\
+          &= x^2-2t^2(x+1)^2-1\\
+          &= x^2\underbrace{(1-2t^2)}_a+x\underbrace{(-4t^2)}_b+
+            \underbrace{(-2t^2-1)}_c
+      \end{align*}
+      Using the quadratic formula gives
+      \begin{align*}
+        x &= \frac{-b\pm\sqrt{b^2-4ac}}{2a}\\
+          &= \frac{4t^2\pm\sqrt{16t^2+4(1-2t^2)(2t^2-1)}}{2(1-2t^2)}\\
+          &= \frac{4t^2\pm2}{2(1-2t^2)}\\
+          &=-1\text{\quad or\quad}\frac{1+2t^2}{1-2t^2}\\
+      \end{align*}
+      Substituting $x$ into $y=t(x+1)$ yields
+      \begin{align*}
+        y = t(x+1)
+          = t\left(\frac{1+2t^2}{1-2t^2}+1\right)
+          = \frac{2t}{1-2t^2}
+      \end{align*}
+      Thus, $(x_t,y_t)=\left(\frac{1+2t^2}{1-2t^2},\frac{2t}{1-2t^2}\right)$ for
+      $t\ne\pm1/\sqrt{2}$.
+
+      Clearly, $t\in\Q\iff(x_t,y_t)\in\Q^2$.
+    }
+    \item{
+      Substituting $t=u/v$ for coprime $u,v\in\Z$ with $v>0$ into $(x_t,y_t)$
+      produces
+      \begin{align*}
+        x_t
+          &= \frac{1+2t^2}{1-2t^2}
+          = \frac{1+2\left(\frac{u}{v}\right)^2}{1-2\left(\frac{u}{v}\right)^2}
+          = \frac{2u^2+v^2}{v^2-2u^2}\\
+        y_t
+          &= \frac{2t}{1-2t^2}
+          = \frac{2\left(\frac{u}{v}\right)^2}{1-2\left(\frac{u}{v}\right)^2}
+          = \frac{2uv}{v^2-2u^2}\\
+      \end{align*}
+    }
+    \item{
+      Inverting the affine transformation presented in \textbf{4.4.3a} gives
+      $x'=P^{-1}(x-u)$, or that $x=\alpha-\beta/2$ and $y=\beta+1$. Thus,
+      \begin{align*}
+        \alpha &= \frac{2u^2+v^2}{v^2-2u^2}+\frac{uv}{v^2-2u^2}-\frac{1}{2}\\
+        \beta &= \frac{2uv}{v^2-2u^2}-1
+        \tag*{\qed}
+      \end{align*}
+    }
+  \end{enumerate}
 
 % problem 4.4
 \subsection{A Hyperbola with No Rational Points}
