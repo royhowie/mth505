@@ -6,7 +6,7 @@
 \usepackage{centernot}
 \usepackage{enumitem}
 \usepackage{float}
-% \usepackage[margin=1in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{parskip}
 \usepackage{pgfplots}
 \usepackage{tikz}
@@ -33,7 +33,7 @@
 
 \begin{document}
 
-\title{\vspace{-3cm}MTH 505 Homework 4}
+\title{\vspace{-2cm}MTH 505 Homework 4}
 \author{Roy Howie}
 \date{April 14, 2017}
 \maketitle
@@ -88,8 +88,9 @@
       Therefore, there are $(m,n,l)\in\Z^3$ with $s=m^2$, $r=n^2$, and $v=l^2$.
       Note $v=r^2+s^2$, so $l^2=m^4+n^4$ and $(m,n,l)$ is another solution to
       FLT. Furthermore, $\gcd(m,n)=1$, as$r$ and $s$ were coprime; $mnl\ne0$, as
-      $rsv\ne0$, and $0<l<|z|$, as $z=u^2+v^2$ with $v$ positive and $v=l^2$.
-
+      $rsv\ne0$; and $0<l<|z|$, as $z=u^2+v^2$ with $v$ positive and $v=l^2$.
+    }
+    \item{
       We are back to square one, contradicting the well ordering of the
       integers, as every solution $(a,b,c)$ to FLT produces another solution
       $(d,e,f)$ with $0<f<|c|$. Hence, no solution to FLT exists.
@@ -103,8 +104,9 @@
   \begin{enumerate}[label=\textbf{(\alph*)}]
     \item{
       Let $P=\left(\begin{smallmatrix}1&0.5\\0&1\end{smallmatrix}\right)$ and
-      $u=(-0.5,-1)$. Apply the affine transformation $x=Px'+u$, where $x=(\alpha,
-      \beta)$ and $x'=(x,y)$. This yields $\alpha=x+0.5y-0.5$ and $\beta=y-1$.
+      $u=(-0.5,-1)$. Apply the affine transformation $x=Px'+u$, where $x=(
+      \alpha,\beta)$ and $x'=(x,y)$. This yields $\alpha=x+0.5y-0.5$ and $\beta
+      =y-1$.
     }
     \item{
       \begin{figure}[H]
@@ -122,7 +124,7 @@
               ({-cosh(x)}, {sinh(x)/sqrt(2)});
             \addplot[black,dashed] expression {+x/sqrt(2)};
             \addplot[black,dashed] expression {-x/sqrt(2)};
-            \addplot[red,<->,domain=-5:5] expression {0.33*(x+1)};
+            \addplot[red,<->,domain=-5:5] expression {(x+1)/3};
             \legend{$x^2-2y^2=1$,,,,$y=t(x-1)$}
           \end{axis}
         \end{tikzpicture}
@@ -181,5 +183,27 @@
 
 % problem 4.4
 \subsection{A Hyperbola with No Rational Points}
+  Consider (Hyp2): $x^2-2y^2=3$.
+  \begin{enumerate}[label=\textbf{(\alph*)}]
+    \item{
+      Assume there is a solution $(x,y)\in\Q^2$ to Hyp2, then $x$ and $y$ can be
+      written in the form $a/c$ and $b/c$ with $\gcd(a,b,c)=1$ for
+      some $a,b,c\in\Z$. Hyp2 can then be rewritten as $a^2-2b^2=3c^2$.
+    }
+    \item{
+      Suppose $\gcd(a,3)\ne1$, i.e. $\gcd(a,3)=3$, then 3 divides $a$.
+      Therefore, $a=3k$ for some $k\in\Z$. Hyp2 can then be rewritten once more
+      as $(3k)^2-2b^2=3c^2$, implying $2b^2\equiv0\pmod{3}$, or that $b\in3\Z$.
+      Hence, $\gcd(a,b,c)\ge3$, a contradiction, as $\gcd(a,b,c)$ was said to be
+      1. Thus, $\gcd(a,3)=1$.
+    }
+    \item{
+      Reduce $a^2-2y^2=3c^2$ mod 3 to get $2a^2\equiv(2y)^2\pmod{3}$. From part
+      \textbf{b}, we can reduce this to $2\equiv(2ya^{-1})^2\pmod{3}$. This is
+      a contradiction, as 2 is not a square modulo 3, for $0^2\equiv0$,
+      $1^2\equiv1$, and $2^2\equiv1$ modulo 3.
+    }
+    \qed
+  \end{enumerate}
 
 \end{document}
